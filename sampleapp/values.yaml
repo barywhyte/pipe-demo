@@ -1,0 +1,8 @@
+service:
+  port: 8080
+  type: LoadBalancer
+
+image:
+  repository: yogeshvk1209/pyuserwebapp
+
+replicaSetCount: 4

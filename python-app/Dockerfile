@@ -1,8 +1,7 @@
 FROM python:3.7
-
-RUN mkdir /app
+  
+COPY . /app
 WORKDIR /app
-ADD . /app/
-
-EXPOSE 5000
-CMD ["python", "/app/app.py"]
+RUN pip install -r requirements.txt
+ENTRYPOINT ["python3"]
+CMD ["app.py"]

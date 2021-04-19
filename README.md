@@ -57,5 +57,12 @@ terraform apply demo.tfplan
      * expose two endpoints from a rest API
      * Track API usage statistics with API gateway system.
      
-#### While the the API gateway system was successfully deployed, I ran into problem with google runtime sidecar which is mean to intercept all API requests and validate them with API key. Secondly, I didn't quite understand how best to expose those container result endpoints for external viewing via LoadBalancer as this is usually done with ```kubectl describe``` command
+#### While the the API gateway system was successfully deployed, I ran into problem with google runtime sidecar which is mean to intercept all API requests and validate them with API key. Secondly, I didn't quite understand how best to expose those container result endpoints for external viewing via LoadBalancer as this is usually done with ```kubectl describe``` command.
+
+The error that emanated from API gateway system has to do with inability of ESPv2 google runtime image to mount service account key into runtime's pod which is what you see when you run 
+```
+kubectl apply -f esp-failed.yaml
+kubectl logs pod-name -c esp
   
+  ```
+  inside the bastion host

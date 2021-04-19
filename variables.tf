@@ -4,6 +4,8 @@ variable "project" {
   default =  "roava-io"
 }
 
+## You need to login into google console and create a service account 
+## Download the service account key and save it and reference it here
 variable "secret" {
   type = string
   default     = "~/svc-accounts/pipe-demo.json"
@@ -19,6 +21,7 @@ variable "ssh_user" {
   default = "ubuntu"
 }
 
+## ssh keys are needed by terraform to copy and execute shell scripts on remote machine
 variable "ssh_pub_key_file" {
   default = "~/.ssh/id_rsa.pub"
 }
@@ -96,13 +99,21 @@ variable "machine_type" {
   default = "n1-standard-2"
 }
 
+variable "service_name" {
+  description = "The project where we will deploy this"
+  default = "api.endpoints.roava-io.cloud.goog"
+}
+
 ######## Outputs ###########
 ###### Cluster endpoints ######
 output "cluster_endpoint" {
   value = google_container_cluster.cluster.endpoint
 }
 
-###### Jumphost Compute instance ######
+###### Bastion-host Compute instance ######
 output "Bastion_host_instance_ip" {
   value = google_compute_instance.bastion-host.network_interface.0.access_config.0.nat_ip
+}
+output "Cloud Endpoints" {
+  value = google_endpoints_service.openapi_service.service_name
 }

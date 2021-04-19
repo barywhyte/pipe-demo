@@ -25,7 +25,7 @@ resource "google_compute_subnetwork" "vpc_subnet" {
   ]
 }
 
-###### Creating firewall for Jump-host / bastion-host ######
+#### Creating firewall bastion-host ####
 resource "google_compute_firewall" "allow-bastion" {
   name    = "fw-allow-ssh-bastion"
   project = var.project

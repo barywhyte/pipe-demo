@@ -3,6 +3,6 @@ service:
   type: LoadBalancer
 
 image:
-  repository: yogeshvk1209/pyuserwebapp
+  repository: barywhyte/pipe-demo:appv3
 
 replicaSetCount: 4

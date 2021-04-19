@@ -1,5 +1,5 @@
 
-############### GKE Cluster Start #####################
+############### K8S Cluster Begins #####################
 
 data "google_container_engine_versions" "gkeversion" {
   location           = "us-central1"
@@ -10,8 +10,8 @@ data "google_container_engine_versions" "gkeversion" {
 resource "google_container_cluster" "cluster" {
   name               = var.cluster_name
 
-## Add location for multi AZ worker nodes
-#location           = var.region
+## Add location for worker nodes
+
 
   location           = var.cluster_zone
   project            = var.project
@@ -59,14 +59,11 @@ resource "google_container_cluster" "cluster" {
 
 }
 
-############### GKE Cluster End #####################
-############### GKE Pool Start #####################
+############### K8S Cluster End #####################
+############### K8S Pool Begins #####################
 
 resource "google_container_node_pool" "nodepool0" {
   cluster      = google_container_cluster.cluster.name
-
-##Add location for multi AZ worker nodes
-#location    = var.region
 
   location     = var.cluster_zone
   project      = var.project
@@ -100,4 +97,4 @@ resource "google_container_node_pool" "nodepool0" {
   depends_on = [google_container_cluster.cluster]
 }
 
-############### GKE Pool End #####################
+############### K8S Pool End #####################

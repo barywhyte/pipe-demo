@@ -1,8 +1,8 @@
 # [START swagger]
 swagger: "2.0"
 info:
-  description: "roava API Gateway Deployment."
-  title: "Roava API Gateway dev"
+  description: "Pipedrive API Stat."
+  title: "Endpoints for Pipe Demo"
   version: "1.0.0"
 host: "api.endpoints.roava-io.cloud.goog"
 
@@ -15,7 +15,7 @@ schemes:
 # Uncomment the next line if you configure SSL for this API.
 - "http"
 paths:
-  "/app":
+  "/":
     get:
       description: "Echo back a given message."
       operationId: "get"
@@ -35,63 +35,8 @@ paths:
           $ref: "#/definitions/echoMessage"
       security:
        - api_key: []
-       
-    post:
-      description: "Echo back a given message."
-      operationId: "post"
-      produces:
-      - "application/json"
-      responses:
-        200:
-          description: "ms-api"
-          schema:
-            $ref: "#/definitions/echoMessage"
-      parameters:
-      - description: "Message to echo"
-        in: body
-        name: message
-        required: true
-        schema:
-          $ref: "#/definitions/echoMessage"
-      security:
-       - service-to-service: []
-       
 
-  "/echo":
-    post:
-      description: "Return a message."
-      operationId: "graphql"
-      produces:
-      - "application/json"
-      responses:
-        200:
-          description: "ms-api"
-          schema:
-            $ref: "#/definitions/echoMessage"
-      parameters:
-      - description: "Message to echo"
-        in: body
-        name: message
-        required: true
-        schema:
-          $ref: "#/definitions/echoMessage"
-      security:
-      - api_key: []
-
-
-  "/auth/info/googlejwt":
-    get:
-      description: "Returns the requests' authentication information."
-      operationId: "auth_info_google_jwt"
-      produces:
-      - "application/json"
-      responses:
-        200:
-          description: "Authentication info."
-          schema:
-            $ref: "#/definitions/authInfoResponse"
-      security:
-      - google_jwt: []
+  
   "/auth/info/googleidtoken":
     get:
       description: "Returns the requests' authentication information."

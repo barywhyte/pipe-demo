@@ -2,7 +2,7 @@
   #name   = "openapi-dev.yml"
   #bucket = "pipe-terraform-state"
 #}
-
+#### Deploy Cloud Endpoints As API Gateway System To Display API Stat
 resource "google_endpoints_service" "openapi_service" {
   service_name   = var.service_name
   project        = var.project

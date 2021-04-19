@@ -6,10 +6,8 @@ provider "google" {
 }
 
 ############### Provider End ######################
-############### Backend Start ######################
 
-
-
+############### Backend remote state Start ######################
 
 terraform {
  backend "gcs" {
@@ -18,4 +16,4 @@ terraform {
  }
 }
 
-############### Backend End ######################
+############### Backend remote state End ######################
